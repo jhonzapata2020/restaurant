@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MV RESTAURANT</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            <img src="images/banner.png" alt="MV RESTAURANT" class="banner">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
+        
+        <div class="navegacion" id="menuNav">
+            <div>Comidas</div>
+            <div>Bebidas</div>
+            <div>Helados</div>
+            <div>Postres</div>
+        </div>
+        
+        <div class="logo">
+            <img src="images/logo.jpg" alt="Logo">
+        </div>
+        
+        <div class="grid-menu">
+            <img src="images/comidas.jpg" alt="Comidas">
+            <img src="images/bebidas.jpeg" alt="Bebidas">
+            <img src="images/helados.jpg" alt="Helados">
+            <img src="images/postres.jpg" alt="Postres">
+        </div>
+    </div>
+
+    <script>
+        // Funcionalidad del menú hamburguesa
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const menuNav = document.getElementById('menuNav');
+            const overlay = document.getElementById('overlay');
+            
+            function toggleMenu() {
+                menuToggle.classList.toggle('active');
+                menuNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+            
+            menuToggle.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+            
+            const menuItems = menuNav.querySelectorAll('div');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    toggleMenu();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

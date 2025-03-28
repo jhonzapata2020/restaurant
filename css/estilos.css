@@ -23,18 +23,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: #eee;
+    padding: 0; /* Eliminado el padding para que el banner ocupe todo el espacio */
+    background-color: transparent; /* Cambiado a transparente */
     margin-bottom: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: relative;
+    overflow: hidden; /* Para asegurar que el banner no desborde */
 }
 
 /* Banner */
 .banner {
-    max-width: 900px; /* Ajusta el tamaño según necesites */
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
     height: auto;
+    display: block; /* Elimina espacios en blanco debajo de la imagen */
+    max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
 }
 
 /* Menú hamburguesa */
@@ -52,7 +55,7 @@ body {
     display: block;
     width: 30px;
     height: 3px;
-    background-color: #333;
+    background-color: #fff; /* Cambiado a blanco para que se vea sobre el banner oscuro */
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -122,6 +125,14 @@ body {
         display: block;
     }
     
+    .header {
+        padding: 0; /* Mantener sin padding en móvil */
+    }
+    
+    .banner {
+        /* El banner se adaptará automáticamente */
+    }
+    
     .navegacion {
         position: fixed;
         top: 0;
@@ -148,7 +159,11 @@ body {
     }
     
     .grid-menu {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+    
+    .grid-menu img {
+        height: 180px; /* Altura ligeramente menor en móvil */
     }
     
     /* Animación del menú hamburguesa */
@@ -178,5 +193,36 @@ body {
     
     .overlay.active {
         display: block;
+    }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .contenedor {
+        padding: 10px; /* Menos padding en pantallas muy pequeñas */
+    }
+    
+    .logo img {
+        width: 100px; /* Logo más pequeño */
+    }
+    
+    .grid-menu img {
+        height: 160px; /* Altura aún menor en pantallas muy pequeñas */
+    }
+    
+    .navegacion div {
+        padding: 12px; /* Menos padding para los elementos del menú */
+    }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1200px) {
+    .banner {
+        max-height: 300px; /* Limitar altura en pantallas muy grandes */
+        object-fit: cover; /* Mantener proporción */
+    }
+    
+    .grid-menu {
+        grid-template-columns: repeat(4, 1fr); /* Forzar 4 columnas en pantallas grandes */
     }
 }
